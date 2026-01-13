@@ -1,0 +1,947 @@
+/* 1. KHỞI TẠO BIẾN VÀ PHÔNG CHỮ */
+:root {
+    --gold: #c5a059;
+    --dark: #333333;
+    --gray-light: #f9f9f9;
+    --text-muted: #888888;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--white);
+    font-family: 'Montserrat', serif;
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. HEADER SECTION */
+.hero-section {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Sửa hình header để hiển thị đầy đủ trên mobile */
+@media (max-width: 600px) {
+    .hero-section {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: scroll;
+        /* Đảm bảo hình fill đầy màn hình, có thể crop 1 chút nhưng không bị xám */
+    }
+}
+
+.hero-overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20vh;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+}
+
+.we-get-married {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3.5rem, 12vw, 6.5rem);
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+}
+.names-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.names-container h2 {
+    margin: 5px 0; /* Giảm margin trên và dưới của mỗi tên */
+    line-height: 1;
+}
+
+.ampersand {
+    margin: -10px 0; /* Kéo ký hiệu & sát vào hai cái tên */
+    font-size: 2rem;
+}
+.couple-names-header {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 5px;
+    margin-top: -5px;
+    font-weight: 400;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    margin-top: 5px;
+}
+
+/* 3. INVITATION CONTAINER */
+.invitation-container {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.invitation-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.title-top1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: normal !important;
+    letter-spacing: 3px;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.title-top {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: var(--dark);
+}
+
+.title-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.divider-vertical {
+    width: 1px;
+    height: 40px;
+    background-color: var(--dark);
+    margin: 25px auto;
+}
+
+.main-invite-text {
+    font-size: 1rem;
+    color: #555;
+    max-width: 450px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* 4. COUPLE SECTION (SO LE) */
+.couple-section {
+    display: flex;
+    gap: 30px;
+    margin: 60px 0;
+}
+
+.couple-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-group { padding: 20px 0; }
+.text-group.top { text-align: left; }
+.text-group.bottom { text-align: right; }
+
+.label {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: var(--dark);
+    line-height: 1;
+}
+
+.label-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.name {
+    font-family: 'Montserrat', serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+.image-box {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.05);
+}
+
+.image-box img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.image-box:hover img { transform: scale(1.05); }
+
+/* 5. FAMILY SECTION */
+.family-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0;
+    border-top: 1px solid #eee;
+}
+
+.family-column { flex: 1; text-align: center; }
+
+.family-label {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #1d2019;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.parent-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: #070707;
+    margin-bottom: 4px;
+}
+
+/* 6. PARTY INVITATION */
+.party-invitation {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid #eee;
+}
+
+.and-symbol {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: #3c5418;
+    margin: 15px 0;
+}
+
+.groom-bride-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    letter-spacing: p2.5x;
+    font-weight: 300;
+}
+.big-date {
+    font-family: 'Cinzel', serif;
+    font-size: 4.5rem;
+    color: var(--gold);
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+    padding: 10px 50px;
+    margin: 15px 0;
+}
+
+.time-details-modern {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.hour {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: normal !important; /* Đảm bảo chữ thẳng */
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    /* text-transform: uppercase; */
+}
+
+.date-row-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Giảm khoảng cách để vừa màn hình điện thoại */
+    margin: 20px 0;
+    width: 100%;
+}
+
+.date-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Quan trọng: Cho phép 2 bên co giãn đều nhau */
+    max-width: 100px;
+}
+
+.date-side span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; /* Giảm size chữ Tháng/Năm một chút */
+    letter-spacing: 1px;
+    padding: 8px 0;
+    color: #444;
+    white-space: nowrap; /* Ép chữ không được xuống dòng */
+}
+
+.date-side .line {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc; 
+}
+
+.big-date-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: #3c5418;
+    line-height: 0.8;
+}
+/* Chữ Ngày âm lịch bên dưới */
+.lunar-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal !important;
+    font-size: 0.9rem;
+    color: #575555;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+/* Phần địa điểm */
+.location-details {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.organize-at {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #3b3a3a;
+}
+
+.place-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.place-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: #555;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* 7. ALBUM ẢNH LƯỚT NGANG */
+.wedding-gallery {
+    padding: 60px 0;
+    background-color: var(--white);
+}
+
+.gallery-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+    justify-content: center;
+}
+
+.gallery-scroll-container::-webkit-scrollbar { display: none; }
+
+.gallery-track { display: flex; gap: 15px; }
+
+
+.gallery-slide {
+    flex: 0 0 75vw;
+    max-width: 350px;
+    aspect-ratio: 3/4;
+    scroll-snap-align: center;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 8. RSVP & FOOTER */
+.topbtn {
+    margin-top: 40px;
+    padding: 14px 45px;
+    background: transparent;
+    border: 1px solid var(--dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.rsvp-btn:hover { background: var(--dark); color: white; }
+
+.simple-footer {
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* 9. ANIMATIONS & RESPONSIVE */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+}
+
+/* TẤT CẢ CHỈNH SỬA CHO MOBILE GỘP TẠI ĐÂY */
+@media (max-width: 600px) {
+    /* Phần Cô dâu - Chú rể */
+    .couple-section { 
+        flex-direction: column; 
+        gap: 40px; 
+    }
+    .text-group.bottom { 
+        text-align: left; 
+    }
+    .image-box { 
+        max-width: 320px; 
+        margin: 0 auto; 
+    }
+
+    /* Phần Nhà Trai - Nhà Gái (Ép nằm ngang) */
+    .family-section {
+        flex-direction: row; 
+        gap: 10px;           
+        padding: 30px 5px;
+        display: flex; /* Đảm bảo luôn kích hoạt flex */
+    }
+    .parent-name {
+        font-size: 0.8rem;   
+        line-height: 1.4;
+    }
+
+    /* Phần Ngày Tháng Tổ Chức (Ép nằm ngang) */
+    .date-row-wrapper {
+        gap: 10px; 
+        display: flex;
+        justify-content: center;
+    }
+    .date-side span {
+        font-size: 0.8rem; 
+        white-space: nowrap;
+    }
+    .big-date-main {
+        font-size: 3rem; 
+    }
+    .big-date { 
+        font-size: 2.8rem; 
+        padding: 10px 30px; 
+    }
+
+    /* Phần Cảm Ơn Kết Thiệp */
+    .thank-you-title { 
+        font-size: 3rem; 
+    }
+    .thank-you-text { 
+        font-size: 0.85rem; 
+        padding: 0 10px; 
+    }
+
+    .timer-box .number { 
+        font-size: 2rem; 
+    }
+    .timer-container { 
+        gap: 5px; 
+    }
+    /* Ép 2 khối nằm ngang */
+    .couple-section { 
+        display: flex;
+        flex-direction: row !important; 
+        gap: 10px; 
+        padding: 0 5px;
+        align-items: flex-start;
+    }
+
+    .couple-card {
+        flex: 1; 
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .label {
+        font-size: 1.2rem !important; 
+    }
+
+    .name {
+        font-size: 0.7rem !important;
+        letter-spacing: 1px;
+    }
+
+    .image-box { 
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .text-group.top { text-align: left; }
+    .text-group.bottom { text-align: right; }
+
+    .gallery-scroll-container {
+        padding: 10px;
+        display: block; 
+
+    }
+
+    /* Track chứa các ảnh */
+    .gallery-track {
+        gap: 10px; 
+    }
+
+    .gallery-slide {
+        flex: 0 0 75vw;
+        max-width: 350px;
+        aspect-ratio: 3/4;
+        scroll-snap-align: center;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .gallery-slide img {
+        border-radius: 8px; 
+    }
+}
+/* PHẦN LỊCH & TIMELINE */
+.wedding-event {
+    padding: 80px 0;
+    background-color: #b6c8a5; 
+}
+
+/* Calendar Style */
+.calendar-container {
+    max-width: 350px;
+    margin: 0 auto 60px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+}
+
+.calendar-month {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: var(--dark);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.day-name {
+    font-weight: bold;
+    color: #888;
+    padding-bottom: 10px;
+}
+
+.day {
+    padding: 5px;
+    color: #555;
+}
+
+.day-active {
+    background-color: #3f4e31;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Timeline Style */
+.timeline-section {
+    padding: 40px 20px;
+    background: white;
+}
+
+.timeline-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.timeline-divider {
+    font-family: 'Great Vibes', cursive;
+    width: 60px;
+    height: 1px;
+    background: #333;
+    margin: 0 auto 40px;
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột trên mobile */
+    gap: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-item img {
+    width: 40px;
+    opacity: 0.6;
+    margin-bottom: 10px;
+}
+
+.timeline-item .time {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--gold);
+}
+
+.timeline-item .event-name {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    color: #666;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .timeline-grid {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+/* PHẦN COUNTDOWN */
+.countdown-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.countdown-decor img {
+    width: 50px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.countdown-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.timer-box .number {
+    font-family: 'Cinzel', serif; 
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #333;
+}
+
+.timer-box .label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.timer-divider {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #ccc;
+    padding-bottom: 20px; 
+}
+
+@media (max-width: 480px) {
+    .timer-box .number { font-size: 2rem; }
+    .timer-container { gap: 5px; }
+}
+
+/* PHẦN RSVP */
+input, select, .form-control {
+    color: #666 !important;
+    /* border-color: #eeeeee !important; Làm mờ cả đường viền ô nhập */
+}
+.rsvp-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.rsvp-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.rsvp-top-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Định dạng các ô input và select */
+.rsvp-form input, 
+.rsvp-form textarea, 
+.rsvp-form select {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.rsvp-form input:focus, 
+.rsvp-form textarea:focus, 
+.rsvp-form select:focus {
+    border-color: #7a8a64; 
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(122, 138, 100, 0.1);
+}
+
+.rsvp-form textarea {
+    border-radius: 15px; 
+    resize: none;
+}
+
+.submit-btn {
+    background-color: #7a8a64; 
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #5f6b4d;
+}
+
+.flower-footer-decor img {
+    width: 40px;
+    margin-top: 40px;
+    opacity: 0.5;
+}
+
+.flower-decor {
+    text-align: center; 
+    margin: 20px 0; 
+}
+
+.flower-decor img {
+    width: 80px;  
+    height: auto;
+    opacity: 0.5;    
+}
+/* PHẦN CẢM ƠN - KẾT THÚC THIỆP */
+.thank-you-section {
+    width: 100%;
+    height: 80vh; 
+    position: relative;
+    overflow: hidden;
+}
+
+.thank-you-bg {
+    width: 100%;
+    height: 100%;
+    /* Thay link ảnh cưới đẹp nhất của hai bạn vào đây */
+    background: url('../images/thank-you-photo.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sửa hình thank-you để hiển thị đầy đủ trên mobile */
+@media (max-width: 600px) {
+    .thank-you-bg {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        /* Đảm bảo hình fill đầy màn hình, có thể crop 1 chút nhưng không bị xám */
+    }
+    
+    .thank-you-section {
+        height: 100vh;
+    }
+}
+
+/* Lớp phủ tối màu để chữ trắng nổi bật hơn */
+.thank-you-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Độ mờ 40% */
+}
+
+.thank-you-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 600px;
+    color: #ffffff; /* Chữ trắng sang trọng */
+}
+
+.thank-you-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.thank-you-divider {
+    width: 50px;
+    height: 2px;
+    background: #ffffff;
+    margin: 20px auto;
+}
+
+.thank-you-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.couple-names-footer {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+
+#music-control {
+    position: fixed;
+    bottom: 25px;
+    left: 20px; /* Hoặc đổi thành right: 20px nếu bạn muốn đặt cả cụm bên phải màn hình */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Vòng tròn chứa Icon nhạc nằm bên trái */
+.music-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: 1px solid #7a8a64;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* Nằm đè lên dải chữ */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Dải chữ CLICK MUSIC nằm bên phải */
+.music-text {
+    background-color: #7a8a64;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 6px 12px 6px 20px; /* Padding trái rộng hơn để không bị icon che mất chữ */
+    border-radius: 0 20px 20px 0; /* Bo tròn bên phải */
+    margin-left: -15px; /* Đẩy lùi sang trái để chui dưới icon */
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+
+#music-icon {
+    font-size: 16px;
+    color: #7a8a64;
+}
+
+/* Hiệu ứng nhấp nháy cho chữ */
+@keyframes pulse-text {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.music-text {
+    animation: pulse-text 2s infinite ease-in-out;
+}
